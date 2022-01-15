@@ -1,0 +1,15 @@
+/**Card**/
+  
+.card {
+    border: 0.1rem solid #203040;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
+    margin: 1rem;
+  }
+  .card-body {
+    padding: 1rem;
+  }
+  .card-body > * {
+    margin-bottom: 0.5rem;
+  }
+  

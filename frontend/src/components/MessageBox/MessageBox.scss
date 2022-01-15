@@ -1,0 +1,11 @@
+.message-box {
+  border: 0.5rem solid;
+  padding: 1rem;
+  min-width: 20rem;
+  &.info {
+    border-color: #ddd;
+  }
+  &.error {
+    border-color: #ff0000;
+  }
+}
