@@ -4,8 +4,16 @@ import "./MessageBox.scss";
 
 const MessageBox = ({ variant, children }) => {
   return (
-    <div className={`message-box ${variant ? variant : 'info'}`}>{children}</div>
+    <div className={`message-box ${variant ? variant : "info"}`}>
+      {children}
+    </div>
   );
 };
 
-export { MessageBox };
+const MessageBoxVariant = {
+  INFO: "info",
+  ERROR: "error",
+  WARNING: "warning",
+};
+
+export { MessageBox, MessageBoxVariant };

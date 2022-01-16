@@ -20,7 +20,7 @@ export default () => {
       </header>
       <main>
         <Routes>
-          <Route path="/product/:id" element={<ProductScreen/>} />
+          <Route path="/products/:id" element={<ProductScreen/>} />
           <Route path="/" element={<HomeScreen/>} />
         </Routes>
       </main>

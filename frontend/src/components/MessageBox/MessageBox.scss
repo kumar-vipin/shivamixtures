@@ -1,11 +1,16 @@
 .message-box {
-  border: 0.5rem solid;
+  border: 0.1rem solid;
   padding: 1rem;
   min-width: 20rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
   &.info {
     border-color: #ddd;
+    background-color: #f0f0f0;
   }
   &.error {
-    border-color: #ff0000;
+    border-color: #ffc7c7;
+    background: #ffdede;
   }
 }
