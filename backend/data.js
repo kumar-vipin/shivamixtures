@@ -45,6 +45,18 @@ const data = {
       category: "xyz",
       image: "/images/p5.jpg",
     },
+    {
+      _id: "6",
+      name: "product 6",
+      category: "xyz",
+      image: "/images/p6.jpg",
+    },
+    {
+      _id: "7",
+      name: "product 7",
+      category: "xyz",
+      image: "/images/p7.jpg",
+    },
   ],
 };
 
