@@ -1,8 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import data from "./data.js";
+/* import data from "./data.js"; */
 import userRouter from "./routers/userRouter.js";
+import productRouter from "./routers/productRouter.js";
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ mongoose.connect(
   {}
 );
 
-app.get("/api/products/:id", (req, res) => {
+/* app.get("/api/products/:id", (req, res) => {
   const productId = req.params.id;
   const product = data.products.find((p) => p._id === productId);
   if (product) {
@@ -23,13 +24,15 @@ app.get("/api/products/:id", (req, res) => {
   } else {
     res.status(404).send({ message: "Product not found!" });
   }
-});
+}); */
 
-app.get("/api/products", (req, res) => {
+/* app.get("/api/products", (req, res) => {
   res.send(data.products);
-});
+}); */
 
 app.use("/api/users", userRouter);
+
+app.use("/api/products", productRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
