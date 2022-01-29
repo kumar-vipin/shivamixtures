@@ -6,6 +6,7 @@ import { HomeScreen } from "./components/HomeScreen/HomeScreen";
 import { SignIn } from "./components/SignIn/SignIn";
 import { signout } from "./components/SignIn/Signin.actions";
 import "./App.scss";
+import { SignUp } from "./components/SignUp/SignUp";
 
 export default () => {
   const { userInfo } = useSelector((state) => state.userSignIn);
@@ -47,6 +48,7 @@ export default () => {
         <Routes>
           <Route path="/products/:id" element={<ProductScreen />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </main>
