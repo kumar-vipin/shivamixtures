@@ -5,8 +5,9 @@ import { ProductScreen } from "./components/ProductScreen/ProductScreen";
 import { HomeScreen } from "./components/HomeScreen/HomeScreen";
 import { SignIn } from "./components/SignIn/SignIn";
 import { signout } from "./components/SignIn/Signin.actions";
-import "./App.scss";
 import { SignUp } from "./components/SignUp/SignUp";
+import { ProductCart } from "./components/ProductCart/ProductCart";
+import "./App.scss";
 
 export default () => {
   const { userInfo } = useSelector((state) => state.userSignIn);
@@ -46,6 +47,10 @@ export default () => {
       </header>
       <main>
         <Routes>
+          <Route path="/cart">
+            <Route path=":id" element={<ProductCart />} />
+            <Route path="" element={<ProductCart />} />
+          </Route>
           <Route path="/products/:id" element={<ProductScreen />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
