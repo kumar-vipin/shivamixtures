@@ -2,14 +2,24 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import data from "./data";
 
 import thunk from "redux-thunk";
-import { productDetailsReducer, productListReducer } from "./components/ProductScreen/ProductScreen.reducer";
+import {
+  productDetailsReducer,
+  productListReducer,
+} from "./components/ProductScreen/ProductScreen.reducer";
+import { userSigninReducer } from "./components/SignIn/Signin.reducer";
 
-
-const initialState = {};
+const initialState = {
+  userSignIn: {
+    userInfo: localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
+  },
+};
 
 const reducers = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  userSignIn: userSigninReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
