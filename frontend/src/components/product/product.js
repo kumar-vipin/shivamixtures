@@ -9,9 +9,9 @@ const Product = ({ product }) => {
         <img src={product.image} alt={product.name} className="medium" />
       </Link>
       <div className="card-body">
-        <a href="product.html">
+        <Link to={`/products/${product._id}`}>
           <h2>{product.name}</h2>
-        </a>
+        </Link>
         <a href="rent-now.html">Rent Now</a>
       </div>
     </div>

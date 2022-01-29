@@ -10,6 +10,7 @@ import { ProductCart } from "./components/ProductCart/ProductCart";
 import "./App.scss";
 
 export default () => {
+  const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.userSignIn);
   const dispatch = useDispatch();
   const signOutHandler = useCallback(() => {
@@ -20,12 +21,17 @@ export default () => {
     <div className="grid-container">
       <header className="row">
         <div>
-          <a className="brand" href="/">
+          <Link className="brand" to="/">
             ShivaMixtures
-          </a>
+          </Link>
         </div>
         <div>
-          {/* <a href="/cart">Cart</a> */}
+          <Link to="/cart">
+            Cart{" "}
+            {cartItems.length > 0 && (
+              <span className="badge">{cartItems.length}</span>
+            )}
+          </Link>
           {userInfo ? (
             <div className="dropdown">
               <Link to="#">

@@ -55,7 +55,10 @@ ul {
   }
 }
 
-input, select, textarea, button {
+input,
+select,
+textarea,
+button {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
@@ -92,6 +95,15 @@ a.brand {
   color: #fff;
   font-size: 3rem;
   font-weight: bold;
+}
+
+.badge {
+  background-color: #f02020;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
 }
 
 .row {
