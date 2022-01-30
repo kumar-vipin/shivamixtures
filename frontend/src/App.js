@@ -8,6 +8,7 @@ import { signout } from "./components/SignIn/Signin.actions";
 import { SignUp } from "./components/SignUp/SignUp";
 import { ProductCart } from "./components/ProductCart/ProductCart";
 import "./App.scss";
+import { ShippingAddress } from "./components/ShippingAddress/ShippingAddress";
 
 export default () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -60,6 +61,7 @@ export default () => {
           <Route path="/products/:id" element={<ProductScreen />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
+          <Route path="/shipping" element={<ShippingAddress />} />
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </main>
