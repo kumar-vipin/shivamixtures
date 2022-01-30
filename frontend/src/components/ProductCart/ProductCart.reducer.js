@@ -1,4 +1,10 @@
-import { CART_ADD_ITEM, REMOVE_CART_ITEM, SAVE_PAYMENT_METHOD, SAVE_SHIPPING_ADDRESS } from "./ProductCart.constants";
+import { CART_EMPTY } from "../PlaceOrderView/PlaceOrderView.constants";
+import {
+  CART_ADD_ITEM,
+  REMOVE_CART_ITEM,
+  SAVE_PAYMENT_METHOD,
+  SAVE_SHIPPING_ADDRESS,
+} from "./ProductCart.constants";
 
 export const productCartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
@@ -35,6 +41,9 @@ export const productCartReducer = (state = { cartItems: [] }, action) => {
         ...state,
         paymentMethod: action.payload,
       };
+
+    case CART_EMPTY:
+      return { ...state, cartItems: [] };
 
     default:
       return state;
