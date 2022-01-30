@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { MessageBox, MessageBoxVariant } from "../MessageBox/MessageBox";
 import { addToCart, removeFromCart } from "./ProductCart.actions";
-
 import './ProductCart.scss';
 
 const ProductCart = ({}) => {
