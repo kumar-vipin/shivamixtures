@@ -11,6 +11,7 @@ import { ShippingAddress } from "./components/ShippingAddress/ShippingAddress";
 import { PaymentMethod } from "./components/PaymentMethod/PaymentMethod";
 import PlaceOrderView from "./components/PlaceOrderView/PlaceOrderView";
 import "./App.scss";
+import OrderDetails from "./components/PlaceOrderView/OrderDetails";
 
 export default () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -66,6 +67,9 @@ export default () => {
           <Route path="/shipping" element={<ShippingAddress />} />
           <Route path="/payment" element={<PaymentMethod />} />
           <Route path="/placeorder" element={<PlaceOrderView />} />
+          <Route path="/orders">
+            <Route path=":id" element={<OrderDetails />} />
+          </Route>
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </main>

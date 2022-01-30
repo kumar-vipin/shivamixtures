@@ -1,6 +1,6 @@
-import { CART_EMPTY } from "../PlaceOrderView/PlaceOrderView.constants";
 import {
   CART_ADD_ITEM,
+  CART_EMPTY,
   REMOVE_CART_ITEM,
   SAVE_PAYMENT_METHOD,
   SAVE_SHIPPING_ADDRESS,

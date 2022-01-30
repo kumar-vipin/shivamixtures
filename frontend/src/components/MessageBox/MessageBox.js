@@ -1,4 +1,3 @@
-import { process_params } from "express/lib/router";
 import React from "react";
 import "./MessageBox.scss";
 
@@ -14,6 +13,7 @@ const MessageBoxVariant = {
   INFO: "info",
   ERROR: "error",
   WARNING: "warning",
+  SUCCESS: "success",
 };
 
 export { MessageBox, MessageBoxVariant };
