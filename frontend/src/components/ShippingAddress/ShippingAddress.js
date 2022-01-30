@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CheckoutSteps } from "../CheckoutSteps/CheckoutSteps";
@@ -9,9 +9,11 @@ const ShippingAddress = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.userSignIn);
-  if (!userInfo) {
-    navigate("/signin");
-  }
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/signin");
+    }
+  }, [userInfo, navigate]);
   const handleOnSubmit = useCallback(
     (shippingAddress) => {
       dispatch(saveShippingAddress(shippingAddress));
