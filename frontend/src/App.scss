@@ -131,14 +131,25 @@ a.brand {
   padding: 2rem;
 }
 
+.min-30 {
+  min-width: 30rem;
+}
+
 /**Image*/
 img {
   border-radius: 0.5rem;
-  .medium {
+
+  &.small {
+    max-width: 5rem;
+    width: 100%;
+  }
+
+  &.medium {
     max-width: 29rem;
     width: 100%;
   }
-  .large {
+
+  &.large {
     width: 100%;
   }
 }
