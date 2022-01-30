@@ -9,6 +9,7 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { ProductCart } from "./components/ProductCart/ProductCart";
 import { ShippingAddress } from "./components/ShippingAddress/ShippingAddress";
 import { PaymentMethod } from "./components/PaymentMethod/PaymentMethod";
+import PlaceOrderView from "./components/PlaceOrderView/PlaceOrderView";
 import "./App.scss";
 
 export default () => {
@@ -64,6 +65,7 @@ export default () => {
           <Route path="/register" element={<SignUp />} />
           <Route path="/shipping" element={<ShippingAddress />} />
           <Route path="/payment" element={<PaymentMethod />} />
+          <Route path="/placeorder" element={<PlaceOrderView />} />
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </main>
