@@ -12,7 +12,7 @@ const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location?.search ? location?.search.split("=")[1] : "/";
+  const redirect = location?.search && location?.search.split("=")[1];
 
   const dispatch = useDispatch();
   const submitHandler = useCallback(
@@ -27,7 +27,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate(`/${redirect}`);
     }
   }, [navigate, userInfo, redirect]);
 
@@ -70,7 +70,10 @@ const SignIn = () => {
         <div>
           <label />
           <div>
-            New customer? <Link to={`/register?redirect=${redirect}`}>Create your account</Link>
+            New customer?{" "}
+            <Link to={`/register?redirect=${redirect}`}>
+              Create your account
+            </Link>
           </div>
         </div>
       </form>
