@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { PayPalButton } from "react-paypal-button-v2";
 import { LoadingBox } from "../LoadingBox/LoadingBox";
 import { MessageBox, MessageBoxVariant } from "../MessageBox/MessageBox";
 import { orderDetails } from "./PlaceOrderView.actions";
@@ -9,7 +11,7 @@ import "./PlaceOrderView.scss";
 
 const OrderDetails = () => {
   const params = useParams();
-
+  const [sdkReady, setSdkReady] = useState(false);
   const { order, loading, error } = useSelector((state) => state.orderDetails);
 
   const orderId = params.id;
@@ -17,8 +19,35 @@ const OrderDetails = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(orderDetails(orderId));
-  }, [orderId, dispatch]);
+    const addPayPalScript = async () => {
+      const { data } = await axios.get("/api/config/paypal");
+      console.log("data=============== ",data);
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+      script.async = true;
+      script.onload = () => {
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
+    console.log('order ============= ', order);
+    if (!order?._id) {
+      dispatch(orderDetails(orderId));
+    } else {
+      if (!order.isPaid) {
+        if (!window.paypal) {
+          addPayPalScript();
+        } else {
+          setSdkReady(true);
+        }
+      }
+    }
+  }, [orderId, dispatch, order, sdkReady]);
+
+  const successPaymentHandler = useCallback(() => {
+    console.log('successPaymentHandler');
+  }, []);
 
   return loading ? (
     <LoadingBox />
@@ -131,6 +160,18 @@ const OrderDetails = () => {
                     <div>Rs. {order.totalPrice.toFixed(2)}</div>
                   </div>
                 </li>
+                {!order.isPaid && (
+                  <li>
+                    {!sdkReady ? (
+                      <LoadingBox />
+                    ) : (
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
+                    )}
+                  </li>
+                )}
               </ul>
             </div>
           </div>

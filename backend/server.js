@@ -14,7 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
   process.env.MONGODB_URL || "mongodb://localhost/shivamixtures",
-  {}
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
 );
 
 /* app.get("/api/products/:id", (req, res) => {
@@ -36,6 +39,10 @@ app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 
 app.use("/api/orders", orderRouter);
+
+app.use("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+});
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
