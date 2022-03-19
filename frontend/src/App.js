@@ -12,6 +12,7 @@ import { PaymentMethod } from "./components/PaymentMethod/PaymentMethod";
 import PlaceOrderView from "./components/PlaceOrderView/PlaceOrderView";
 import "./App.scss";
 import OrderDetails from "./components/PlaceOrderView/OrderDetails";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 export default () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -44,6 +45,9 @@ export default () => {
               </Link>
               <ul className="dropdown-content">
                 <li>
+                  <Link to="/profile">User Profile</Link>
+                </li>
+                <li>
                   <Link to="#signout" onClick={signOutHandler}>
                     Sign Out
                   </Link>
@@ -70,6 +74,7 @@ export default () => {
           <Route path="/orders">
             <Route path=":id" element={<OrderDetails />} />
           </Route>
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </main>
