@@ -31,8 +31,8 @@ const OrderDetails = () => {
       };
       document.body.appendChild(script);
     };
-    console.log('order ============= ', order);
-    if (!order?._id) {
+    
+    if (!order?._id || order?._id !== orderId) {
       dispatch(orderDetails(orderId));
     } else {
       if (!order.isPaid) {
